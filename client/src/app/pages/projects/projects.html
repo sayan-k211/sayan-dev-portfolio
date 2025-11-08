@@ -1,0 +1,85 @@
+<section class="projects-section">
+  <div class="container">
+    <h2>My Projects</h2>
+    <p class="subtitle">Showcasing my technical work and creative solutions</p>
+
+    <!-- Loading -->
+    <div *ngIf="loading()" class="loading">
+      <div class="spinner"></div>
+      <p>Loading projects...</p>
+    </div>
+
+    <!-- Error -->
+    <div *ngIf="!loading() && error()" class="error-message">
+      <p>{{ error() }}</p>
+    </div>
+
+    <!-- Grid -->
+    <div class="projects-grid" *ngIf="!loading() && !error() && projects().length > 0">
+      <article
+        class="project-card reveal"
+        *ngFor="let project of projects(); trackBy: trackByProjectId"
+        appReveal
+      >
+        <!-- Image -->
+        <div
+          class="project-image"
+          *ngIf="project.imageUrl || project.imageAbsUrl"
+          (click)="openLink(project.link && project.link !== '#' ? project.link : project.github)"
+          tabindex="0"
+        >
+          <img
+            [src]="getImg(project)"
+            [alt]="project.title"
+            (error)="onImageError($event)"
+            loading="lazy"
+          />
+          <div class="image-overlay">
+            <span class="view-text">View Project</span>
+          </div>
+        </div>
+
+        <!-- Content -->
+        <div class="project-content">
+          <h3 class="project-title">{{ project.title }}</h3>
+
+          <div class="tech-stack">
+            <span class="tech-badge" *ngFor="let tech of project.technologies">
+              {{ tech }}
+            </span>
+          </div>
+
+          <p class="project-description" *ngIf="project.description">
+            {{ project.description }}
+          </p>
+
+          <div class="project-actions">
+            <button
+              *ngIf="project.github && project.github !== '#'"
+              class="btn btn-secondary"
+              type="button"
+              (click)="openLink(project.github)"
+            >
+              GitHub
+            </button>
+
+            <button
+              *ngIf="project.link && project.link !== '#'"
+              class="btn btn-primary"
+              type="button"
+              (click)="openLink(project.link)"
+            >
+              Live Demo
+            </button>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <!-- Empty -->
+    <div *ngIf="!loading() && !error() && projects().length === 0" class="empty-state">
+      <p>No projects found.</p>
+      <small class="muted">Tip: ensure featured true and limit in the API aren’t filtering everything out.</small>
+    </div>
+  </div>
+</section>

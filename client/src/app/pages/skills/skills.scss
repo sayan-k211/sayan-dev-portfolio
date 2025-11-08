@@ -1,0 +1,52 @@
+.skills-wrap {
+  max-width: 900px;
+  margin: 2rem 0;
+}
+
+h2 {
+  font-size: 2rem;
+  margin: 1rem 0 2rem;
+}
+
+h3 {
+  margin: 1.5rem 0 0.75rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.skills-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem;
+}
+
+.skill {
+  margin: 0.75rem 0;
+}
+
+.label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.4rem;
+  font-size: 0.95rem;
+}
+
+.bar {
+  position: relative;
+  height: 10px;
+  background: #e9ecef;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.fill {
+  height: 100%;
+  background: #3953fe;    
+  width: 0;
+  transition: width 600ms ease;
+}
+
+.fill.creative {
+  background: #00bfa6;   
+}

@@ -1,0 +1,78 @@
+<section class="youtube-section">
+  <div class="container">
+    <h2>YouTube</h2>
+    <p class="subtitle">Follow my creative journey</p>
+
+    <!-- Loading State -->
+    <div *ngIf="loading()" class="loading">
+      <div class="spinner"></div>
+      <p>Loading YouTube data...</p>
+    </div>
+
+    <!-- Error State -->
+    <div *ngIf="error()" class="error-message">
+      <p>{{ error() }}</p>
+    </div>
+
+    <!-- YouTube Content -->
+    <div *ngIf="!loading() && !error() && youtubeData()" class="yt-grid">
+      
+      <!-- Left: Featured Videos -->
+      <div class="yt-list" *ngIf="youtubeData()!.featuredVideos?.length">
+        <div
+  class="yt-thumb"
+  *ngFor="let v of youtubeData()!.featuredVideos"
+  (click)="openVideo(v)"
+  tabindex="0"
+  role="button"
+  [attr.aria-label]="'Watch ' + v.title"
+>
+  <div class="thumb-wrapper">
+    <img [src]="getVideoThumbnail(v)" [alt]="v.title" loading="lazy" />
+    <div class="hover-text">Watch Full Video</div>
+  </div>
+  <div class="caption">{{ v.title }}</div>
+</div>
+      </div>
+
+      <!-- Right: Stats Card -->
+      <aside class="yt-stats" *ngIf="youtubeData()!.statistics">
+        <div class="metric">
+          <div class="label">Subscribers</div>
+          <div class="value">{{ youtubeData()!.statistics.subscribers | number }}</div>
+        </div>
+        <div class="metric">
+          <div class="label">Total Views</div>
+          <div class="value">{{ youtubeData()!.statistics.totalViews | number }}</div>
+        </div>
+
+        <div class="actions">
+          <a 
+            class="btn btn-primary" 
+            [href]="youtubeData()!.channelUrl || 'https://youtube.com/@sayan_k211'" 
+            target="_blank" 
+            rel="noopener noreferrer"
+          >
+            <i class="fab fa-youtube"></i> View Channel
+          </a>
+          <a 
+            class="btn btn-secondary" 
+            [href]="youtubeData()!.channelUrl || 'https://www.youtube.com/@sayan_k211?sub_confirmation=1
+'" 
+            target="_blank" 
+            rel="noopener noreferrer"
+          >
+            Subscribe
+          </a>
+        </div>
+      </aside>
+
+    </div>
+
+    <!-- Empty State -->
+    <div *ngIf="!loading() && !error() && !youtubeData()" class="empty-state">
+      <p>No YouTube content available.</p>
+    </div>
+
+  </div>
+</section>

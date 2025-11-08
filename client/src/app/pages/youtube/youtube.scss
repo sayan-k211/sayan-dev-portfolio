@@ -1,0 +1,269 @@
+.youtube-section {
+  padding: 80px 20px;
+  background: #f8f9fa;
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.5rem;
+    color: #3953FE;
+    text-align: center;
+    margin-bottom: 1rem;
+    font-weight: 700;
+  }
+
+  .subtitle {
+    text-align: center;
+    color: #666;
+    font-size: 1.1rem;
+    margin-bottom: 3rem;
+  }
+}
+
+/* Loading State */
+.loading {
+  text-align: center;
+  padding: 3rem;
+
+  .spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #3953FE;
+    border-radius: 50%;
+    margin: 0 auto 1rem;
+    animation: spin 1s linear infinite;
+  }
+
+  p {
+    color: #666;
+  }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Error State */
+.error-message {
+  text-align: center;
+  padding: 2rem;
+  background: #fee;
+  border-radius: 8px;
+  color: #c33;
+}
+
+/* Empty State */
+.empty-state {
+  text-align: center;
+  padding: 3rem;
+  color: #999;
+}
+
+/* YouTube Grid */
+.yt-grid {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 2rem;
+  align-items: start;
+  margin-top: 2rem;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Video List */
+.yt-list {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.yt-thumb {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: white;
+
+  img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+
+    img {
+      transform: scale(1.05);
+    }
+  }
+
+  &:focus {
+    outline: 2px solid #3953FE;
+    outline-offset: 2px;
+  }
+
+  .caption {
+     padding: 1rem;
+  font-weight: 700;
+  color: #222;
+  font-size: 1.6rem;
+  text-align: center;
+  }
+}
+
+/* Stats Sidebar */
+.yt-stats {
+  position: sticky;
+  top: 90px;
+  display: grid;
+  gap: 1rem;
+
+  .metric {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+    }
+  }
+
+  .label {
+    color: #6b7280;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+  }
+
+  .value {
+    font: 800 2.5rem/1 'Montserrat', sans-serif;
+    color: #3953FE;
+  }
+
+  .actions {
+    display: grid;
+    gap: 0.75rem;
+    margin-top: 1rem;
+  }
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  border: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  font-family: 'Lato', sans-serif;
+
+  i {
+    font-size: 1.1rem;
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+.btn-primary {
+  background: #FF0000;
+  color: white;
+
+  &:hover {
+    background: #cc0000;
+    box-shadow: 0 4px 12px rgba(255, 0, 0, 0.3);
+  }
+}
+
+.btn-secondary {
+  background: transparent;
+  color: #FF0000;
+  border: 2px solid #FF0000;
+
+  &:hover {
+    background: #FF0000;
+    color: white;
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .youtube-section {
+    padding: 60px 15px;
+
+    h2 {
+      font-size: 2rem;
+    }
+
+    .subtitle {
+      font-size: 1rem;
+    }
+  }
+
+  .yt-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .yt-stats {
+    position: static;
+  }
+}
+.thumb-wrapper {
+  position: relative;
+  overflow: hidden;
+
+  img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .hover-text {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.55);
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: 600;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  &:hover img {
+    transform: scale(1.05);
+  }
+
+  &:hover .hover-text {
+    opacity: 1;
+  }
+}

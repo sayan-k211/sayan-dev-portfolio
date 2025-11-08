@@ -1,0 +1,43 @@
+<h2>Skills</h2>
+
+<div *ngIf="skills as s; else loading" class="skills-wrap">
+  <section>
+    <h3>Technical Skills</h3>
+    <ul class="skills-list">
+      <li class="skill" *ngFor="let item of s.technical">
+        <div class="label">
+          <span>{{ item.name }}</span>
+          <span>{{ item.level }}%</span>
+        </div>
+        <div class="bar" role="progressbar"
+             [attr.aria-valuenow]="item.level"
+             aria-valuemin="0" aria-valuemax="100"
+             [attr.aria-label]="item.name + ' ' + item.level + ' percent'">
+          <div class="fill" [ngStyle]="{ width: item.level + '%' }"></div>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <section>
+    <h3>Creative Skills</h3>
+    <ul class="skills-list">
+      <li class="skill" *ngFor="let item of s.creative">
+        <div class="label">
+          <span>{{ item.name }}</span>
+          <span>{{ item.level }}%</span>
+        </div>
+        <div class="bar" role="progressbar"
+             [attr.aria-valuenow]="item.level"
+             aria-valuemin="0" aria-valuemax="100"
+             [attr.aria-label]="item.name + ' ' + item.level + ' percent'">
+          <div class="fill creative" [ngStyle]="{ width: item.level + '%' }"></div>
+        </div>
+      </li>
+    </ul>
+  </section>
+</div>
+
+<ng-template #loading>
+  <p>Loading skills...</p>
+</ng-template>

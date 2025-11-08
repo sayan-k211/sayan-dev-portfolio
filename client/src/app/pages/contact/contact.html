@@ -1,0 +1,192 @@
+<div class="contact-wrapper">
+  
+  <!-- Contact Header -->
+  <div class="contact-header">
+    <h2 class="contact-title">Let's Work Together</h2>
+    <p class="subtitle">Have a project in mind? Let's create something amazing together.</p>
+  </div>
+
+  <!-- Social Links  -->
+  <div class="social-links-horizontal">
+    <a href="mailto:sayankhadka211@gmail.com" class="social-link">
+      <i class="fas fa-envelope"></i>
+      <span>sayankhadka211@gmail.com</span>
+    </a>
+    <a href="https://github.com/sayan-k211" target="_blank" rel="noopener" class="social-link">
+      <i class="fab fa-github"></i>
+      <span>GitHub</span>
+    </a>
+    <a href="https://linkedin.com/in/sayan-k211" target="_blank" rel="noopener" class="social-link">
+      <i class="fab fa-linkedin"></i>
+      <span>LinkedIn</span>
+    </a>
+    <a href="https://youtube.com/@sayan_k211" target="_blank" rel="noopener" class="social-link">
+      <i class="fab fa-youtube"></i>
+      <span>YouTube</span>
+    </a>
+    <!-- <a href="https://instagram.com/sayan_k211" target="_blank" rel="noopener" class="social-link">
+      <i class="fab fa-instagram"></i>
+      <span>Instagram</span>
+    </a>
+      <a href="https://www.facebook.com/Sayank211" target="_blank" rel="noopener" class="social-link">
+      <i class="fab fa-facebook"></i>
+      <span>Facebook</span>
+    </a> -->
+  </div>
+
+  <!-- Contact Form  -->
+  <div class="contact-form-wrapper-full">
+    
+    <form class="premium-form" [formGroup]="form" (ngSubmit)="submit()">
+      
+      <!-- Name Field -->
+      <div class="form-group">
+        <label for="name">
+          Your Name <span class="required">*</span>
+        </label>
+        <div class="input-wrapper">
+          <i class="fas fa-user input-icon"></i>
+          <input
+            id="name"
+            type="text"
+            formControlName="name"
+            placeholder="John Doe"
+            [class.error]="form.get('name')?.invalid && form.get('name')?.touched"
+          />
+        </div>
+        <span class="error-text" *ngIf="form.get('name')?.invalid && form.get('name')?.touched">
+          Name is required
+        </span>
+      </div>
+
+      <!-- Email Field -->
+      <div class="form-group">
+        <label for="email">
+          Email Address <span class="required">*</span>
+        </label>
+        <div class="input-wrapper">
+          <i class="fas fa-envelope input-icon"></i>
+          <input
+            id="email"
+            type="email"
+            formControlName="email"
+            placeholder="john@example.com"
+            [class.error]="form.get('email')?.invalid && form.get('email')?.touched"
+          />
+        </div>
+        <span class="error-text" *ngIf="form.get('email')?.invalid && form.get('email')?.touched">
+          Valid email is required
+        </span>
+      </div>
+
+      <!-- Subject Field -->
+      <div class="form-group">
+        <label for="subject">
+          Subject <span class="required">*</span>
+        </label>
+        <div class="input-wrapper">
+          <i class="fas fa-tag input-icon"></i>
+          <input
+            id="subject"
+            type="text"
+            formControlName="subject"
+            placeholder="Project Inquiry"
+            [class.error]="form.get('subject')?.invalid && form.get('subject')?.touched"
+          />
+        </div>
+        <span class="error-text" *ngIf="form.get('subject')?.invalid && form.get('subject')?.touched">
+          Subject is required
+        </span>
+      </div>
+
+      <!-- Message Field -->
+      <div class="form-group">
+        <label for="message">
+          Message <span class="required">*</span>
+        </label>
+        <div class="input-wrapper">
+          <i class="fas fa-comment-dots input-icon"></i>
+          <textarea
+            id="message"
+            formControlName="message"
+            rows="6"
+            placeholder="Tell me about your project..."
+            [class.error]="form.get('message')?.invalid && form.get('message')?.touched"
+          ></textarea>
+        </div>
+        <span class="error-text" *ngIf="form.get('message')?.invalid && form.get('message')?.touched">
+          Message is required (minimum 10 characters)
+        </span>
+      </div>
+
+      <!-- Submit Button -->
+      <button 
+        type="submit" 
+        class="btn-submit"
+        [disabled]="form.invalid || loading()"
+        [class.loading]="loading()"
+      >
+        <span *ngIf="!loading()">
+          <i class="fas fa-paper-plane"></i>
+          Send Message
+        </span>
+        <span *ngIf="loading()">
+          <i class="fas fa-spinner fa-spin"></i>
+          Sending...
+        </span>
+      </button>
+
+            <!-- Success Alert -->
+      <div *ngIf="success()" class="alert alert-success">
+        <i class="fas fa-check-circle"></i>
+        <span>{{ success() }}</span>
+      </div>
+
+      <!-- Error Alert -->
+      <div *ngIf="error()" class="alert alert-error">
+        <i class="fas fa-exclamation-circle"></i>
+        <span>{{ error() }}</span>
+      </div>
+
+    </form>
+
+  </div>
+
+<!-- Info Cards Below Form -->
+  <div class="info-cards-bottom">
+    
+    <div class="info-card-small">
+      <div class="icon-wrapper-small">
+        <i class="fas fa-map-marker-alt"></i>
+      </div>
+      <h4>Location</h4>
+      <p>Tauranga, New Zealand</p>
+    </div>
+
+    <div class="info-card-small">
+      <div class="icon-wrapper-small">
+        <i class="fas fa-clock"></i>
+      </div>
+      <h4>Response Time</h4>
+      <p>Within 24 hours</p>
+    </div>
+
+    <div class="info-card-small">
+      <div class="icon-wrapper-small">
+        <i class="fas fa-briefcase"></i>
+      </div>
+      <h4>Availability</h4>
+      <p>Open to opportunities</p>
+    </div>
+
+    <div class="info-card-small">
+      <div class="icon-wrapper-small">
+        <i class="fas fa-code"></i>
+      </div>
+      <h4>Tech Stack</h4>
+      <p>MEAN Stack Developer</p>
+    </div>
+
+  </div>
+
+</div>

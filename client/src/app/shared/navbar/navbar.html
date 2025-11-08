@@ -1,0 +1,17 @@
+<nav class="navbar" [class.scrolled]="scrolled">
+  <div class="container">
+    <a class="brand" href="#" (click)="go('home', $event)">
+      <img class="avatar" [src]="assetBase + '/assets/pp.jpg'" alt="Sayan" />
+      <span class="wordmark">Sayan Khadka</span>
+    </a>
+
+    <nav class="links">
+      <a *ngFor="let i of ids"
+         href="#"
+         [class.active]="active === i"
+         (click)="go(i, $event)">
+        {{ i | titlecase }}
+      </a>
+    </nav>
+  </div>
+</nav>

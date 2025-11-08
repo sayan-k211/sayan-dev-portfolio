@@ -1,0 +1,218 @@
+<app-navbar [active]="activeSection()" (nav)="scrollTo($event)"></app-navbar>
+
+<!-- HERO -->
+<section id="home" class="hero section" appReveal>
+  <div class="pfp" *ngIf="profile()?.profileImage">
+    <img
+      [src]="assetBase + profile()!.profileImage"
+      alt="Sayan Khadka"
+      class="profile-img"
+    />
+  </div>
+
+  <h1 class="title">{{ profile()?.name || 'Sayan Khadka' }}</h1>
+  <p class="tag">{{ profile()?.tagline || 'Showcasing Tech & Creativity' }}</p>
+
+  <div class="cta">
+    <a class="btn solid" [href]="resumeUrl">Download CV</a>
+    <button class="btn outline" type="button" (click)="scrollTo('contact')">Contact</button>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section
+  id="about"
+  class="section about-hero"
+  appReveal
+  style="--about-img: url('/img/hero.jpg');"
+>
+
+  <div class="about-bg"></div>
+  <div class="about-overlay"></div>
+
+  <div class="about-content container">
+    <h2>About</h2>
+
+<p class="lead">
+  I’m Sayan Khadka, born in the lap of the Himalayas, a place that teaches calm strength and deep peace. Now based in Tauranga, New Zealand, I’m pursuing my Bachelor of Information Technology and building full-stack web applications that balance functionality with clean, thoughtful design.
+
+My journey bridges two worlds, the precision of technology and the soul of storytelling. Inspired by my homeland, where Mount Everest touches the sky and Lord Gautam Buddha’s message of peace was born, I believe creation should carry purpose. Whether it’s writing clean code, crafting user experiences, or filming stories that connect cultures, my work reflects that belief, grounded, creative, and human.
+
+I’m constantly exploring ways to blend innovation with meaning, connecting the discipline of IT with the art of visual storytelling, building a career that feels authentic to who I am and where I come from.
+</p>
+
+
+<div class="about-highlights">
+  <p>🎓 Studying Bachelor of Information Technology at Toi Ohomai</p>
+  <p>📹 Creating YouTube content focused on travel and lifestyle</p>
+  <p>💻 Building projects with Angular, React, Node, and MongoDB</p>
+  <p>🚀 Exploring internships and real client opportunities</p>
+</div>
+
+  </div>
+</section>
+
+
+<!-- SKILLS -->
+<section id="skills" class="section container" appReveal>
+  <h2>Skills</h2>
+
+  <div class="skills-grid">
+    <div>
+      <h3>Technical Skills</h3>
+      <ul class="skills-list" *ngIf="skills(); else skLoading">
+        <li class="skill" *ngFor="let s of skills()!.technical">
+          <div class="label">
+            <span>{{ s.name }}</span>
+            <span>{{ s.level }}%</span>
+          </div>
+          <div class="bar" role="progressbar"
+               [attr.aria-valuenow]="s.level" aria-valuemin="0" aria-valuemax="100"
+               [attr.aria-label]="s.name + ' ' + s.level + ' percent'">
+            <div class="fill" [style.width.%]="s.level"></div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div>
+      <h3>Creative Skills</h3>
+      <ul class="skills-list" *ngIf="skills(); else skLoading">
+        <li class="skill" *ngFor="let s of skills()!.creative">
+          <div class="label">
+            <span>{{ s.name }}</span>
+            <span>{{ s.level }}%</span>
+          </div>
+          <div class="bar" role="progressbar"
+               [attr.aria-valuenow]="s.level" aria-valuemin="0" aria-valuemax="100"
+               [attr.aria-label]="s.name + ' ' + s.level + ' percent'">
+            <div class="fill creative" [style.width.%]="s.level"></div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <ng-template #skLoading><p>Loading skills...</p></ng-template>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="section container" appReveal>
+  <app-projects></app-projects>
+</section>
+
+<!-- YOUTUBE -->
+<section id="youtube" class="section container" appReveal>
+  <app-youtube></app-youtube>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section container" appReveal>
+  <app-contact></app-contact>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-container">
+    
+    <!-- Footer Top -->
+    <div class="footer-top">
+      
+      <!-- Brand Column -->
+      <div class="footer-col footer-brand">
+        <div class="brand-logo">
+          <img [src]="assetBase + '/assets/pp.jpg'" alt="Sayan Khadka" class="footer-avatar" />
+          <h3>Sayan Khadka</h3>
+        </div>
+        <p class="footer-tagline">
+          Building digital experiences that blend technology and creativity
+        </p>
+        <div class="social-icons-footer">
+          <a href="https://github.com/sayan-k211" target="_blank" rel="noopener" aria-label="GitHub">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="https://linkedin.com/in/sayan-k211" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a href="https://youtube.com/@sayan_k211" target="_blank" rel="noopener" aria-label="YouTube">
+            <i class="fab fa-youtube"></i>
+          </a>
+          <a href="https://instagram.com/sayan_k211" target="_blank" rel="noopener" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://www.facebook.com/Sayank211" target="_blank" rel="noopener" aria-label="Facebook">
+            <i class="fab fa-facebook"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="#home" (click)="$event.preventDefault(); scrollTo('home')">
+            <i class="fas fa-home"></i> Home
+          </a></li>
+          <li><a href="#about" (click)="$event.preventDefault(); scrollTo('about')">
+            <i class="fas fa-user"></i> About
+          </a></li>
+          <li><a href="#skills" (click)="$event.preventDefault(); scrollTo('skills')">
+            <i class="fas fa-code"></i> Skills
+          </a></li>
+          <li><a href="#projects" (click)="$event.preventDefault(); scrollTo('projects')">
+            <i class="fas fa-briefcase"></i> Projects
+          </a></li>
+        </ul>
+      </div>
+
+      <!-- More Links -->
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <ul class="footer-links">
+          <li><a href="#youtube" (click)="$event.preventDefault(); scrollTo('youtube')">
+            <i class="fab fa-youtube"></i> YouTube
+          </a></li>
+          <li><a href="#contact" (click)="$event.preventDefault(); scrollTo('contact')">
+            <i class="fas fa-envelope"></i> Contact
+          </a></li>
+          <li><a href="mailto:sayankhadka211@gmail.com">
+            <i class="fas fa-paper-plane"></i> Email Me
+          </a></li>
+          <li><a [href]="resumeUrl" target="_blank">
+            <i class="fas fa-download"></i> Download CV
+          </a></li>
+        </ul>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="footer-col">
+        <h4>Get in Touch</h4>
+        <ul class="footer-contact">
+          <li>
+            <i class="fas fa-envelope"></i>
+            <a href="mailto:sayankhadka211@gmail.com">sayankhadka211@gmail.com</a>
+          </li>
+          <li>
+            <i class="fas fa-map-marker-alt"></i>
+            <span>Tauranga, New Zealand</span>
+          </li>
+          <li>
+            <i class="fas fa-graduation-cap"></i>
+            <span>Toi Ohomai Institute of Technology</span>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+      <div class="footer-bottom-content">
+        <p class="copyright">
+          © {{ currentYear }} <strong>Sayan Khadka</strong>. All rights reserved.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</footer>
