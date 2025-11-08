@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
   apiBase: '/api',
-  assetBase: '',
+  assetBase: '/public',
   youtubeChannelUrl: 'https://www.youtube.com/@sayan_k211'
 };
