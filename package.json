@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Full-stack portfolio with Angular & Express",
   "scripts": {
-    "build": "cd client && npm install --legacy-peer-deps && npm run build -- --configuration production",
+    "build": "cd client && npm install --legacy-peer-deps && npm run build",
     "start": "cd server && npm install && node src/index.js"
   },
   "engines": {
