@@ -1,13 +1,14 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "description": "",
+  "description": "Express backend for Sayan Dev Portfolio",
   "main": "src/index.js",
   "scripts": {
-    "dev": "nodemon src/index.js"
+    "dev": "nodemon src/index.js",
+    "start": "node src/index.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Sayan",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",

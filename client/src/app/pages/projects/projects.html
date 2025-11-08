@@ -28,6 +28,7 @@
           (click)="openLink(project.link && project.link !== '#' ? project.link : project.github)"
           tabindex="0"
         >
+          <!-- CHANGED LINE: use getImg(project) -->
           <img
             [src]="getImg(project)"
             [alt]="project.title"

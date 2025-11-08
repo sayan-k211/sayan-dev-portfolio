@@ -1,12 +1,13 @@
 {
   "name": "sayan-dev-portfolio",
+  "private": true,
   "version": "1.0.0",
-  "description": "Full-stack portfolio with Angular & Express",
+  "description": "Full-stack portfolio with Angular and Express",
+  "engines": { "node": "20.x", "npm": "10.x" },
   "scripts": {
-    "build": "cd client && npm install && npm run build",
-    "start": "cd server && npm install && node src/index.js"
-  },
-  "engines": {
-    "node": "18.x"
+    "build": "npm run build:client && npm run build:server",
+    "build:client": "cd client && npm ci && npm run build",
+    "build:server": "cd server && npm ci",
+    "start": "node server/src/index.js"
   }
 }
