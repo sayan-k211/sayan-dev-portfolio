@@ -1,0 +1,27 @@
+[{
+  "_id": {
+    "$oid": "690db9549d12f28fc41444b6"
+  },
+  "name": "Sayan Khadka",
+  "tagline": "Showcasing Tech & Creativity",
+  "bio": "Bachelor of Information Technology student and travel vlogger from Nepal, currently based in Tauranga, New Zealand. I bridge the gap between technology and creative content, building modern web applications while sharing my journey through video storytelling.",
+  "contact": {
+    "email": "sayankhadka211@gmail.com"
+  },
+  "social": {
+    "linkedin": "https://www.linkedin.com/in/sayan-k211/",
+    "github": "https://github.com/sayan-k211",
+    "youtube": "https://www.youtube.com/@sayan_k211",
+    "instagram": "https://www.instagram.com/sayan_k211/",
+    "facebook": "https://www.facebook.com/Sayank211"
+  },
+  "profileImage": "/assets/pp.jpg",
+  "resumeFile": "/resume/Sayan_Khadka_Resume.pdf",
+  "createdAt": {
+    "$date": "2025-11-07T09:18:12.109Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-07T09:18:12.109Z"
+  },
+  "__v": 0
+}]

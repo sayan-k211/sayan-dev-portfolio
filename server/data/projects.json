@@ -1,0 +1,72 @@
+[{
+  "_id": {
+    "$oid": "690db9549d12f28fc41444b8"
+  },
+  "title": "SwasthyaFuel",
+  "technologies": [
+    "React Native",
+    "Firebase",
+    "Node.js",
+    "Google Maps API"
+  ],
+  "description": "A culturally adaptive meal prep app for international students featuring local ingredient substitutions, macro tracking, and Firebase authentication. My flagship project combining design, culture, and fitness technology.",
+  "imageUrl": "/projects/project_swasthyafuel.png",
+  "link": "#",
+  "github": "https://github.com/sayan-k211/International-students",
+  "featured": true,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-11-07T09:18:12.158Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-07T09:18:12.158Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "690db9549d12f28fc41444b9"
+  },
+  "title": "Supabase CRUD App",
+  "technologies": [
+    "React.js",
+    "Supabase",
+    "PostgreSQL",
+    "Tailwind CSS"
+  ],
+  "description": "A simple yet scalable CRUD application built using Supabase backend and React frontend. Demonstrates authentication, data persistence, and responsive UI with modern styling.",
+  "imageUrl": "/projects/project_supabase.jpg",
+  "link": "#",
+  "github": "https://github.com/sayan-k211/supabase_crud_final",
+  "featured": true,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-11-07T09:18:12.158Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-07T09:18:12.158Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "690db9549d12f28fc41444ba"
+  },
+  "title": "SCP Foundation React App",
+  "technologies": [
+    "React.js",
+    "JavaScript",
+    "REST API",
+    "CSS3"
+  ],
+  "description": "A front-end React application inspired by the SCP Foundation universe. Features live API fetching, category filtering, and a dark UI styled as a classified document database.",
+  "imageUrl": "/projects/project_scp.jpg",
+  "link": "#",
+  "github": "https://github.com/sayan-k211/React-App",
+  "featured": true,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-11-07T09:18:12.158Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-07T09:18:12.158Z"
+  }
+}]

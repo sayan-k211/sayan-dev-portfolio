@@ -53,7 +53,6 @@ app.use(
   })
 );
 
-/* ---------- Static: /public for assets you added ---------- */
 // serve files from /server/src/public at /public/...
 app.use(
   '/public',

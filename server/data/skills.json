@@ -1,0 +1,121 @@
+[{
+  "_id": {
+    "$oid": "690db9549d12f28fc41444bc"
+  },
+  "technical": [
+    {
+      "name": "JavaScript",
+      "level": 85,
+      "category": "Programming Language"
+    },
+    {
+      "name": "TypeScript",
+      "level": 80,
+      "category": "Programming Language"
+    },
+    {
+      "name": "Python",
+      "level": 75,
+      "category": "Programming Language"
+    },
+    {
+      "name": "Java",
+      "level": 70,
+      "category": "Programming Language"
+    },
+    {
+      "name": "C#",
+      "level": 65,
+      "category": "Programming Language"
+    },
+    {
+      "name": "Angular",
+      "level": 80,
+      "category": "Frontend Framework"
+    },
+    {
+      "name": "React",
+      "level": 85,
+      "category": "Frontend Framework"
+    },
+    {
+      "name": "Node.js",
+      "level": 80,
+      "category": "Backend Framework"
+    },
+    {
+      "name": "Express.js",
+      "level": 80,
+      "category": "Backend Framework"
+    },
+    {
+      "name": "MongoDB",
+      "level": 75,
+      "category": "Database"
+    },
+    {
+      "name": "MySQL",
+      "level": 70,
+      "category": "Database"
+    },
+    {
+      "name": "Git & GitHub",
+      "level": 85,
+      "category": "Tools"
+    },
+    {
+      "name": "REST APIs",
+      "level": 80,
+      "category": "Backend"
+    }
+  ],
+  "creative": [
+    {
+      "name": "Adobe Premiere Pro",
+      "level": 90,
+      "category": "Video Editing"
+    },
+    {
+      "name": "CapCut",
+      "level": 95,
+      "category": "Video Editing"
+    },
+    {
+      "name": "Adobe Photoshop",
+      "level": 75,
+      "category": "Design"
+    },
+    {
+      "name": "Canva",
+      "level": 85,
+      "category": "Design"
+    },
+    {
+      "name": "Color Grading",
+      "level": 85,
+      "category": "Post-Production"
+    },
+    {
+      "name": "Storytelling",
+      "level": 90,
+      "category": "Content Creation"
+    }
+  ],
+  "certifications": [
+    {
+      "name": "Bachelor of Information Technology",
+      "issuer": "Toi Ohomai Institute of Technology",
+      "status": "In Progress",
+      "_id": {
+        "$oid": "690db9549d12f28fc41444bd"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-07T09:18:12.211Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-07T09:18:12.211Z"
+  },
+  "__v": 0
+}]
