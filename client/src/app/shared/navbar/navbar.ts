@@ -13,7 +13,7 @@ export class NavbarComponent {
   @Input() active: string | null = null;
   @Output() nav = new EventEmitter<string>();
   ids = ['home', 'about', 'skills', 'projects', 'youtube', 'contact'];
-  assetBase = environment.assetBase || 'http://localhost:8080';
+  assetBase = environment.assetBase;
   scrolled = false;
 
   @HostListener('window:scroll', [])

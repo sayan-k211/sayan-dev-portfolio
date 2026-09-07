@@ -73,6 +73,10 @@
               Live Demo
             </button>
           </div>
+
+          <p class="repo-note" *ngIf="!project.github || project.github === '#'">
+            Repository private under client confidentiality
+          </p>
         </div>
       </article>
     </div>

@@ -34,19 +34,26 @@
     <h2>About</h2>
 
 <p class="lead">
-  I’m Sayan Khadka, born in the lap of the Himalayas, a place that teaches calm strength and deep peace. Now based in Tauranga, New Zealand, I’m pursuing my Bachelor of Information Technology and building full-stack web applications that balance functionality with clean, thoughtful design.
+  I'm Sayan Khadka. I grew up in Nepal, in the shadow of the Himalayas, and I'm now based in
+  Tauranga, New Zealand, where I graduated from Toi Ohomai in 2026 with a Bachelor of Applied
+  Information Technology.
 
-My journey bridges two worlds, the precision of technology and the soul of storytelling. Inspired by my homeland, where Mount Everest touches the sky and Lord Gautam Buddha’s message of peace was born, I believe creation should carry purpose. Whether it’s writing clean code, crafting user experiences, or filming stories that connect cultures, my work reflects that belief, grounded, creative, and human.
+  I build web and mobile applications. My final year project was a voice activated Android app
+  for two conservation researchers, taken from first requirements through to a signed release I
+  installed on their own phone. The part I'm proudest of is rarely the feature. It's the
+  diagnosis, working out why something actually broke instead of changing things until the
+  symptom disappears.
 
-I’m constantly exploring ways to blend innovation with meaning, connecting the discipline of IT with the art of visual storytelling, building a career that feels authentic to who I am and where I come from.
+  Alongside that I make travel and lifestyle videos for a YouTube channel. Editing turned out to
+  be closer to writing software than I expected. Both come down to deciding what to leave out.
 </p>
 
 
 <div class="about-highlights">
-  <p>🎓 Studying Bachelor of Information Technology at Toi Ohomai</p>
-  <p>📹 Creating YouTube content focused on travel and lifestyle</p>
-  <p>💻 Building projects with Angular, React, Node, and MongoDB</p>
-  <p>🚀 Exploring internships and real client opportunities</p>
+  <p>&#127891; Bachelor of Applied Information Technology, Toi Ohomai, 2026</p>
+  <p>&#128187; Angular, React Native, Node, C# and SQL</p>
+  <p>&#128249; Travel and lifestyle videos on YouTube</p>
+  <p>&#128640; Looking for a graduate developer role in New Zealand</p>
 </div>
 
   </div>
@@ -57,40 +64,50 @@ I’m constantly exploring ways to blend innovation with meaning, connecting the
 <section id="skills" class="section container" appReveal>
   <h2>Skills</h2>
 
+  <div class="skill-legend">
+    <span data-level="Confident">Confident</span>
+    <span data-level="Working knowledge">Working knowledge</span>
+    <span data-level="Learning">Learning</span>
+  </div>
+
   <div class="skills-grid">
     <div>
-      <h3>Technical Skills</h3>
-      <ul class="skills-list" *ngIf="skills(); else skLoading">
-        <li class="skill" *ngFor="let s of skills()!.technical">
-          <div class="label">
-            <span>{{ s.name }}</span>
-            <span>{{ s.level }}%</span>
-          </div>
-          <div class="bar" role="progressbar"
-               [attr.aria-valuenow]="s.level" aria-valuemin="0" aria-valuemax="100"
-               [attr.aria-label]="s.name + ' ' + s.level + ' percent'">
-            <div class="fill" [style.width.%]="s.level"></div>
-          </div>
-        </li>
-      </ul>
+      <h3>Technical</h3>
+      <ng-container *ngIf="skills(); else skLoading">
+        <div class="skill-group" *ngFor="let g of technicalGroups()">
+          <h4 class="skill-group-title">{{ g.category }}</h4>
+          <ul class="skill-tags">
+            <li *ngFor="let s of g.items" [attr.data-level]="s.level" [title]="s.level">
+              {{ s.name }}
+            </li>
+          </ul>
+        </div>
+      </ng-container>
     </div>
 
     <div>
-      <h3>Creative Skills</h3>
-      <ul class="skills-list" *ngIf="skills(); else skLoading">
-        <li class="skill" *ngFor="let s of skills()!.creative">
-          <div class="label">
-            <span>{{ s.name }}</span>
-            <span>{{ s.level }}%</span>
-          </div>
-          <div class="bar" role="progressbar"
-               [attr.aria-valuenow]="s.level" aria-valuemin="0" aria-valuemax="100"
-               [attr.aria-label]="s.name + ' ' + s.level + ' percent'">
-            <div class="fill creative" [style.width.%]="s.level"></div>
-          </div>
-        </li>
-      </ul>
+      <h3>Creative</h3>
+      <ng-container *ngIf="skills(); else skLoading">
+        <div class="skill-group" *ngFor="let g of creativeGroups()">
+          <h4 class="skill-group-title">{{ g.category }}</h4>
+          <ul class="skill-tags">
+            <li *ngFor="let s of g.items" [attr.data-level]="s.level" [title]="s.level">
+              {{ s.name }}
+            </li>
+          </ul>
+        </div>
+      </ng-container>
     </div>
+  </div>
+
+  <div class="credentials" *ngIf="credentials().length">
+    <h3>Education and Certifications</h3>
+    <ul class="credential-list">
+      <li *ngFor="let c of credentials()">
+        <span class="cred-name">{{ c.name }}</span>
+        <span class="cred-meta">{{ c.issuer }} &middot; {{ c.status }}</span>
+      </li>
+    </ul>
   </div>
 
   <ng-template #skLoading><p>Loading skills...</p></ng-template>

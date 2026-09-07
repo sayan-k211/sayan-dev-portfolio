@@ -32,6 +32,8 @@ export class YoutubeComponent {
   private http = inject(HttpClient);
   
   readonly assetBase = environment.assetBase;
+  readonly channelUrl = environment.youtubeChannelUrl;
+  readonly subscribeUrl = `${environment.youtubeChannelUrl}?sub_confirmation=1`;
 
   youtubeData = signal<MediaData | null>(null);
   loading = signal<boolean>(true);
@@ -43,7 +45,7 @@ export class YoutubeComponent {
 
   private loadYouTubeData() {
     this.http
-      .get<{ success: boolean; data: MediaData }>(`${environment.apiBase}/portfolio/media`)
+      .get<{ success: boolean; data: MediaData }>(`${environment.dataBase}/media.json`)
       .subscribe({
         next: (response) => {
           console.log('✅ YouTube/Media data loaded:', response);
@@ -65,7 +67,7 @@ export class YoutubeComponent {
 
   openVideo(video: FeaturedVideo) {
     if (video.videoId) {
-      window.open(video.videoId, '_blank', 'noopener,noreferrer');
+      window.open(`https://www.youtube.com/watch?v=${video.videoId}`, '_blank', 'noopener,noreferrer');
     }
   }
 }

@@ -1,0 +1,32 @@
+{
+  "success": true,
+  "data": [
+    {
+      "title": "Roadkill Counter",
+      "technologies": ["React Native", "Kotlin", "Firebase", "Sherpa-ONNX"],
+      "description": "A hands free Android app built for two conservation researchers at Toi Ohomai. Drivers report possum roadkill by voice without touching the screen, and the app saves the location, time and a spoken freshness answer to Firestore. Delivered end to end and installed on the client's own device.",
+      "imageUrl": "/projects/project_roadkill.png",
+      "link": "#",
+      "github": "",
+      "featured": true
+    },
+    {
+      "title": "SwasthyaFuel",
+      "technologies": ["React Native", "Firebase", "Expo"],
+      "description": "A meal preparation app for international students that suggests locally available substitutes for cultural ingredients they cannot find abroad, with macro tracking alongside. Firebase authentication and Firestore, published to Google Play as an internal test release.",
+      "imageUrl": "/projects/project_swasthyafuel.png",
+      "link": "#",
+      "github": "https://github.com/sayan-k211/swasthyafuel",
+      "featured": true
+    },
+    {
+      "title": "Supabase CRUD App",
+      "technologies": ["React.js", "Supabase", "PostgreSQL", "Tailwind CSS"],
+      "description": "A CRUD application with a React frontend and a Supabase backend running on PostgreSQL. Covers authentication, data persistence and a responsive interface.",
+      "imageUrl": "/projects/project_supabase.jpg",
+      "link": "#",
+      "github": "https://github.com/sayan-k211/supabase_crud_final",
+      "featured": true
+    }
+  ]
+}

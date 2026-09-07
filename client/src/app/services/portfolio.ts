@@ -6,29 +6,29 @@ import { environment } from '../../environments/environment';
 @Injectable({ providedIn: 'root' })
 export class PortfolioService {
   private http = inject(HttpClient);
-  private base = environment.apiBase;
+  private base = environment.dataBase;
 
   getProfile() {
     return this.http
-      .get<{ success: boolean; data: any }>(`${this.base}/portfolio/profile`)
+      .get<{ success: boolean; data: any }>(`${this.base}/profile.json`)
       .pipe(map(r => r.data));
   }
 
   getSkills() {
     return this.http
-      .get<{ success: boolean; data: any }>(`${this.base}/portfolio/skills`)
+      .get<{ success: boolean; data: any }>(`${this.base}/skills.json`)
       .pipe(map(r => r.data));
   }
 
   getProjects() {
     return this.http
-      .get<{ success: boolean; data: any[] }>(`${this.base}/portfolio/projects`)
+      .get<{ success: boolean; data: any[] }>(`${this.base}/projects.json`)
       .pipe(map(r => r.data));
   }
 
   getMedia() {
     return this.http
-      .get<{ success: boolean; data: any }>(`${this.base}/portfolio/media`)
+      .get<{ success: boolean; data: any }>(`${this.base}/media.json`)
       .pipe(map(r => r.data));
   }
 }

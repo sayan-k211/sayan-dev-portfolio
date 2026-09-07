@@ -1,0 +1,23 @@
+{
+  "success": true,
+  "data": {
+    "platform": "YouTube",
+    "channelName": "Sayan Khadka",
+    "channelUrl": "https://www.youtube.com/@sayan_k211",
+    "statistics": { "subscribers": 1758, "totalViews": 268508 },
+    "featuredVideos": [
+      {
+        "videoId": "0-KNjOJfFkI",
+        "title": "Dashain Celebration in Nepal",
+        "thumbnailUrl": "/thumbnails/dashain_thumbnail.png",
+        "featured": true
+      },
+      {
+        "videoId": "tfQjFb85cHQ",
+        "title": "Exploring Hobbiton - The Shire Experience",
+        "thumbnailUrl": "/thumbnails/hobbiton_thumbnail.png",
+        "featured": true
+      }
+    ]
+  }
+}

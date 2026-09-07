@@ -15,7 +15,7 @@ export class ContactComponent {
   private fb = inject(FormBuilder);
   private http = inject(HttpClient);
 
-  readonly base = environment.apiBase;
+  readonly base = environment.contactEndpoint;
 
   form = this.fb.group({
     name: ['', [Validators.required, Validators.maxLength(80)]],
@@ -35,7 +35,7 @@ export class ContactComponent {
     this.success.set(null);
     this.error.set(null);
 
-    this.http.post(`${this.base}/contact`, this.form.value).subscribe({
+    this.http.post(this.base, this.form.value).subscribe({
       next: () => {
         this.loading.set(false);
         this.success.set('Thanks! Your message has been sent successfully. I\'ll get back to you soon.');

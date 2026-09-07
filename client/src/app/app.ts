@@ -1,6 +1,7 @@
 import {
   Component,
   HostListener,
+  computed,
   inject,
   signal,
 } from '@angular/core';
@@ -16,8 +17,14 @@ import { environment } from '../environments/environment';
 import { RevealDirective } from './shared/reveal.directive';
 import { YoutubeComponent } from './pages/youtube/youtube';
 
-interface SkillItem { name: string; level: number; }
-interface SkillsPayload { technical: SkillItem[]; creative: SkillItem[]; }
+interface SkillItem { name: string; level: string; category: string; }
+interface Credential { name: string; issuer: string; status: string; }
+interface SkillGroup { category: string; items: SkillItem[]; }
+interface SkillsPayload {
+  technical: SkillItem[];
+  creative: SkillItem[];
+  certifications: Credential[];
+}
 
 interface ProfilePayload {
   name: string;
@@ -51,12 +58,26 @@ function isSectionId(x: string): x is SectionId {
 export class App {
   private ps = inject(PortfolioService);
 
-  readonly resumeUrl = `${environment.apiBase}/resume/download`;
+  readonly resumeUrl = environment.resumeUrl;
   readonly youtubeChannelUrl = environment.youtubeChannelUrl;
   readonly assetBase = environment.assetBase;
 
   profile = toSignal<ProfilePayload | null>(this.ps.getProfile(), { initialValue: null });
   skills = toSignal<SkillsPayload | null>(this.ps.getSkills(), { initialValue: null });
+
+  technicalGroups = computed(() => this.group(this.skills()?.technical));
+  creativeGroups  = computed(() => this.group(this.skills()?.creative));
+  credentials     = computed(() => this.skills()?.certifications ?? []);
+
+  private group(items: SkillItem[] | undefined): SkillGroup[] {
+    const groups: SkillGroup[] = [];
+    for (const item of items ?? []) {
+      let g = groups.find(x => x.category === item.category);
+      if (!g) { g = { category: item.category, items: [] }; groups.push(g); }
+      g.items.push(item);
+    }
+    return groups;
+  }
 
   currentYear = new Date().getFullYear();
   private active = signal<SectionId>('home');

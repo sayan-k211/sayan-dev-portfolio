@@ -1,0 +1,171 @@
+{
+  "success": true,
+  "data": {
+    "technical": [
+      {
+        "name": "TypeScript",
+        "level": "Confident",
+        "category": "Languages"
+      },
+      {
+        "name": "JavaScript",
+        "level": "Confident",
+        "category": "Languages"
+      },
+      {
+        "name": "HTML, CSS and SCSS",
+        "level": "Confident",
+        "category": "Languages"
+      },
+      {
+        "name": "C#",
+        "level": "Working knowledge",
+        "category": "Languages"
+      },
+      {
+        "name": "Kotlin",
+        "level": "Working knowledge",
+        "category": "Languages"
+      },
+      {
+        "name": "Python",
+        "level": "Working knowledge",
+        "category": "Languages"
+      },
+      {
+        "name": "PHP",
+        "level": "Working knowledge",
+        "category": "Languages"
+      },
+      {
+        "name": "SQL and T-SQL",
+        "level": "Working knowledge",
+        "category": "Languages"
+      },
+      {
+        "name": "Angular",
+        "level": "Confident",
+        "category": "Frontend"
+      },
+      {
+        "name": "React",
+        "level": "Confident",
+        "category": "Frontend"
+      },
+      {
+        "name": "React Native and Expo",
+        "level": "Confident",
+        "category": "Frontend"
+      },
+      {
+        "name": "Node.js and Express",
+        "level": "Confident",
+        "category": "Backend and data"
+      },
+      {
+        "name": "REST API design",
+        "level": "Confident",
+        "category": "Backend and data"
+      },
+      {
+        "name": "MongoDB and Mongoose",
+        "level": "Confident",
+        "category": "Backend and data"
+      },
+      {
+        "name": "Firebase",
+        "level": "Confident",
+        "category": "Backend and data"
+      },
+      {
+        "name": "Microsoft SQL Server",
+        "level": "Working knowledge",
+        "category": "Backend and data"
+      },
+      {
+        "name": "MySQL",
+        "level": "Working knowledge",
+        "category": "Backend and data"
+      },
+      {
+        "name": "Supabase and PostgreSQL",
+        "level": "Working knowledge",
+        "category": "Backend and data"
+      },
+      {
+        "name": "Git and GitHub",
+        "level": "Confident",
+        "category": "Tools and practice"
+      },
+      {
+        "name": "Debugging and root cause analysis",
+        "level": "Confident",
+        "category": "Tools and practice"
+      },
+      {
+        "name": "Android Studio and Gradle",
+        "level": "Working knowledge",
+        "category": "Tools and practice"
+      },
+      {
+        "name": "Azure",
+        "level": "Learning",
+        "category": "Tools and practice"
+      }
+    ],
+    "creative": [
+      {
+        "name": "CapCut",
+        "level": "Confident",
+        "category": "Video"
+      },
+      {
+        "name": "Adobe Premiere Pro",
+        "level": "Confident",
+        "category": "Video"
+      },
+      {
+        "name": "Colour grading",
+        "level": "Confident",
+        "category": "Video"
+      },
+      {
+        "name": "Storytelling",
+        "level": "Confident",
+        "category": "Content"
+      },
+      {
+        "name": "Canva",
+        "level": "Confident",
+        "category": "Design"
+      },
+      {
+        "name": "Adobe Photoshop",
+        "level": "Working knowledge",
+        "category": "Design"
+      }
+    ],
+    "certifications": [
+      {
+        "name": "Bachelor of Applied Information Technology",
+        "issuer": "Toi Ohomai Institute of Technology",
+        "status": "Completed 2026"
+      },
+      {
+        "name": "Microsoft Azure Fundamentals (AZ-900)",
+        "issuer": "Microsoft",
+        "status": "In progress"
+      },
+      {
+        "name": "Front End Developer Internship",
+        "issuer": "Leading Edge Software, Nepal",
+        "status": "Completed 2022"
+      },
+      {
+        "name": "High School Diploma, Science and Computing",
+        "issuer": "Kanchanjunga English Higher Secondary School, Nepal",
+        "status": "Completed 2021"
+      }
+    ]
+  }
+}

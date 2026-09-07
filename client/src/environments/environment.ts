@@ -1,6 +1,8 @@
 export const environment = {
   production: false,
-  apiBase: 'http://localhost:8080/api',
-  assetBase: 'http://localhost:8080',
+  dataBase: '/data',
+  assetBase: '',
+  contactEndpoint: 'https://formspree.io/f/mbgjzlya',
+  resumeUrl: '/resume/Sayan_Khadka_Resume.pdf',
   youtubeChannelUrl: 'https://www.youtube.com/@sayan_k211'
 };

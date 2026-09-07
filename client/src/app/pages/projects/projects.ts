@@ -44,7 +44,7 @@ export class ProjectsComponent {
   }
 
   private loadProjects() {
-    const url = `${environment.apiBase}/portfolio/projects`;
+    const url = `${environment.dataBase}/projects.json`;
     console.log('[Projects] fetching:', url);
 
     this.http
