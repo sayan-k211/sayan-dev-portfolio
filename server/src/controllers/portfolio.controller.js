@@ -38,8 +38,7 @@ exports.getProjects = async (req, res, next) => {
   try {
     const items = await Project.find({ featured: true })
       .sort({ createdAt: -1 })
-      .limit(3)
-      .select('title technologies description imageUrl link github featured')
+            .select('title technologies description imageUrl link github featured')
       .lean();
 
     const base = `${req.protocol}://${req.get('host')}`;
@@ -59,7 +58,7 @@ exports.getProjects = async (req, res, next) => {
 exports.getSkills = async (_req, res, next) => {
   try {
     const doc = await Skills.findOne({})
-      .select('technical creative')
+      .select('technical creative certifications')
       .lean();
     res.json({ success: true, data: doc || { technical: [], creative: [] } });
   } catch (err) {
@@ -71,7 +70,7 @@ exports.getSkills = async (_req, res, next) => {
 exports.getMedia = async (_req, res, next) => {
   try {
     const doc = await Media.findOne({})
-      .select('platform channelName statistics featuredVideos')
+      .select('platform channelName channelUrl statistics featuredVideos')
       .lean();
     res.json({ success: true, data: doc || {} });
   } catch (err) {

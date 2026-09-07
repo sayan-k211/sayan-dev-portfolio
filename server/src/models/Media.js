@@ -10,6 +10,7 @@ const FeaturedVideo = new Schema({
 const MediaSchema = new Schema({
   platform: String,          
   channelName: String,
+  channelUrl: String,
   statistics: {
     subscribers: Number,
     totalViews: Number

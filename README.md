@@ -1,204 +1,115 @@
-# Sayan Dev Portfolio  
-**COMP.7214 - Client Server Web Development (Assignment 3)**  
-**Student:** Sayan Khadka  
-**Programme:** Bachelor of Applied Information Technology  
-**Institute:** Toi Ohomai Institute of Technology, Tauranga, New Zealand  
+# Sayan Dev Portfolio
 
+Personal portfolio site. Live at **[sayankhadka.com](https://sayankhadka.com)**.
 
-## Overview  
+Angular frontend, with an Express and MongoDB API in this repo that the site
+content is authored and served from.
 
-**Sayan Dev Portfolio** is a full-stack personal portfolio web application developed for **Assignment 3 - Client Server Web Development**.  
-The system demonstrates the integration of **Angular (frontend)**, **Express (backend)**, and **MongoDB (database)** - implementing a complete client–server communication model with RESTful APIs and real-time data rendering.  
+---
 
-This portfolio serves as both a professional showcase and a demonstration of technical capability, including dynamic project display, contact form with email delivery, and resume download functionality.
+## How it is deployed
 
-## Objectives  
+The deployed site is **static**. `ng build` produces a folder of files that is
+uploaded to Cloudflare Workers static assets, so there is no server process
+running and no database call on a page view.
 
-- Demonstrate full-stack integration (Angular + Express + MongoDB)  
-- Implement dynamic RESTful API communication  
-- Enable database-driven portfolio data  
-- Add functional email contact using SMTP  
-- Produce a deployment-ready and responsive web application  
-- Document architecture and structure for academic assessment  
+The content still lives in MongoDB behind the Express API in `server/`. That API
+is the authoring layer. Its responses are written out to
+`client/public/data/*.json`, and the Angular app reads those files at runtime
+using the exact same shape the API returns:
 
+```json
+{ "success": true, "data": { ... } }
+```
 
-## Folder Structure  
+This means the app is not coupled to how the data arrives. `PortfolioService`
+points at either the API or the JSON files by changing one value in
+`src/environments/`, and no component changes.
+
+The site serves the same content to everyone and is updated a handful of times a
+year, so a live database read on every page view bought nothing and cost a
+monthly server bill plus a cold start on the first visit.
+
+---
+
+## Stack
+
+**Frontend** — Angular 20 (standalone components, signals), SCSS, TypeScript  
+**Backend** — Node.js, Express, MongoDB with Mongoose  
+**Hosting** — Cloudflare Workers static assets, deployed from `main` on push  
+**Contact form** — Formspree, so no server is needed to send mail
+
+---
+
+## Structure
 
 ```text
 sayan-dev-portfolio/
-├── client/
-│   ├── src/
-│   │   ├── app/
-│   │   ├── assets/
-│   │   └── environments/
-│   └── dist/
-│       └── client/
-│           └── browser/
+├── client/                       Angular application
+│   ├── public/
+│   │   ├── data/                 Content the deployed site reads
+│   │   └── assets/ projects/ thumbnails/ resume/
+│   ├── src/app/
+│   │   ├── pages/                projects, youtube, contact
+│   │   ├── shared/               navbar, reveal directive
+│   │   └── services/portfolio.ts Single data access point
+│   ├── src/environments/         dataBase, assetBase, contactEndpoint
+│   └── wrangler.jsonc            Cloudflare static assets config
 │
-├── server/
-│   ├── src/
-│   │   ├── controllers/
-│   │   ├── models/
-│   │   ├── routes/
-│   │   ├── public/
-│   │   │   ├── projects/
-│   │   │   └── resume/
-│   │   ├── index.js
-│   │   └── seed.js
-│   ├── package.json
-│   └── .env
-│
-└── README.md
+└── server/                       Express API, content authoring layer
+    └── src/
+        ├── controllers/ models/ routes/
+        └── seed.js               Seeds MongoDB with the site content
 ```
 
-## Environment Configuration  
+---
 
-Create a `.env` file inside the **/server** folder and add the following:
+## Running it locally
 
-```text
-NODE_ENV=development
-PORT=8080
-MONGO_URI=<your MongoDB Atlas connection string>
-SMTP_HOST=<your smtp host>
-SMTP_PORT=587
-SMTP_USER=<your smtp user>
-SMTP_PASS=<your smtp password>
-CONTACT_TO=<your email address>
-CLIENT_ORIGIN=http://localhost:4200
+**Frontend only**, which is all you need to work on the site:
 
-```
-
-## Setup and Execution  
-
-### 1. Install Dependencies  
-
-```text
+```bash
 cd client
 npm install
-```
-```text
-cd ../server
-npm install
-```
-
-### 2. Seed the Database
-Populate MongoDB with initial data:
-
-```text
-cd server
-node src/seed.js
-```
-Expected output:
-MongoDB Connected ✅ and ✅ Seeding completed successfully!
-
-### 3. Run Development Servers
-Start Angular frontend:
-
-```text
-cd client
 npm start
 ```
 
-Start Express backend:
-```text
+Runs on `http://localhost:4200` and reads content from `public/data/`.
+
+**With the API**, if you want to change content at the database layer:
+
+```bash
 cd server
-npm run dev
+npm install
+# set MONGO_URI in .env
+node src/seed.js
+npm start
 ```
-Access the site at:
-http://localhost:4200
 
-Deployment-Ready Integration
-After building the Angular app:
+Then point `dataBase` in `client/src/environments/environment.ts` at the running
+API instead of `/data`.
 
-```text
+---
+
+## Build and deploy
+
+```bash
 cd client
-npm run build
+npm run build             # outputs to dist/client/browser
 ```
-The compiled build is stored in:
-client/dist/client/browser
 
-The Express server is configured to automatically serve these static files in production:
+Cloudflare builds and deploys on every push to `main`, using the settings in
+`client/wrangler.jsonc`. `not_found_handling` is set to
+`single-page-application` so unmatched paths return `index.html`.
 
-```text
-js
+---
 
-const clientDist = path.join(__dirname, '..', '..', 'client', 'dist', 'client', 'browser');
-app.use(express.static(clientDist));
-app.get(/^(?!\/api).*/, (_req, res) => {
-  res.sendFile(path.join(clientDist, 'index.html'));
-});
-```
-This makes the application fully deployable to Vercel, Render, or Heroku.
+## Notes
 
-## Functional Components
-### 1. Portfolio Data API
-Fetches profile, projects, and skills from MongoDB using Mongoose models, displayed dynamically in Angular.
+Content lives in two places, `server/src/seed.js` and
+`client/public/data/*.json`. They are generated from the same source and must be
+changed together.
 
-### 2. Contact Form
-Posts messages to /api/contact/submit and sends real emails using Nodemailer with SMTP authentication.
-
-### 3. Resume Download
-Endpoint /api/resume/download serves the PDF stored in /server/src/public/resume/.
-
-### 4. YouTube Integration
-Displays subscriber count and featured videos dynamically fetched from MongoDB.
-
-### 5. Static Asset Hosting
-All images and PDFs are served securely from /server/src/public.
-
-## Technology Stack
-**Frontend**
-- Angular 18
-- TypeScript
-- SCSS
-
-**Backend**
-- Node.js
-- Express.js
-- MongoDB
-- Mongoose
-
-**Other Tools**
-- Nodemailer (for contact form)
-- Helmet, Morgan, CORS, Rate Limiting (for security)
-- Environment variables via dotenv
-- EJS disabled - using pure JSON API
-
-## Security and Optimization
-- CORS and Helmet configured for secure communication
-
-- Rate limiter prevents excessive API calls
-
-- Sensitive data hidden via .env variables
-
-- Angular build optimized for production
-
-## Learning Outcomes
-- Implementation of full client-server communication
-
-- Development of RESTful APIs with database integration
-
-- Email functionality using Nodemailer
-
-- Static file hosting and deployment setup
-
-- Code organization and documentation best practices
-
-## Future Enhancements
-- Admin panel for adding/updating projects
-
-- Authentication with JWT for admin access
-
-- Database message logging for contact form
-
-- Cloud deployment and CI/CD setup
-
-```text
-Author
-Name: Sayan Khadka
-Student ID: 30073793
-Course: COMP.7214 - Client Server Web Development
-Programme: Bachelor of Applied Information Technology
-Institution: Toi Ohomai Institute of Technology, Tauranga, New Zealand
-YouTube: https://www.youtube.com/@sayan_k211
-```
+Secrets are read from environment variables and are not committed. The Formspree
+endpoint in `src/environments/` is a public endpoint by design and is not a
+secret.

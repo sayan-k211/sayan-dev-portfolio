@@ -2,7 +2,7 @@ const { Schema, model } = require('mongoose');
 
 const SkillItem = new Schema({
   name: String,
-  level: Number, 
+  level: String,
   category: String  
 }, { _id: false });
 
