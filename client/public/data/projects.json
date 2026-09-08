@@ -13,7 +13,7 @@
     {
       "title": "SwasthyaFuel",
       "technologies": ["React Native", "Firebase", "Expo"],
-      "description": "A meal preparation app for international students that suggests locally available substitutes for cultural ingredients they cannot find abroad, with macro tracking alongside. Firebase authentication and Firestore, published to Google Play as an internal test release.",
+      "description": "A meal preparation app for international students that suggests locally available substitutes for cultural ingredients they cannot find abroad, with macro tracking alongside. Firebase authentication and Firestore, with security rules scoping every read and write to the signed in user.",
       "imageUrl": "/projects/project_swasthyafuel.png",
       "link": "#",
       "github": "https://github.com/sayan-k211/swasthyafuel",

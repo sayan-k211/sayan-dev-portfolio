@@ -78,6 +78,17 @@ export class ProjectsComponent {
     img.style.display = 'none';
   }
 
+  cardLink(p: Project): string {
+    if (p.link && p.link !== '#') return p.link;
+    if (p.github && p.github !== '#') return p.github;
+    return '';
+  }
+
+  cardLinkLabel(p: Project): string {
+    if (p.link && p.link !== '#') return 'View Project';
+    return 'View on GitHub';
+  }
+
   openLink(url?: string) {
     if (!url || url === '#') return;
     window.open(url, '_blank', 'noopener,noreferrer');

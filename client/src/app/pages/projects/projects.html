@@ -25,18 +25,21 @@
         <div
           class="project-image"
           *ngIf="project.imageUrl || project.imageAbsUrl"
-          (click)="openLink(project.link && project.link !== '#' ? project.link : project.github)"
-          tabindex="0"
+          [class.is-linked]="!!cardLink(project)"
+          [attr.tabindex]="cardLink(project) ? 0 : null"
+          [attr.role]="cardLink(project) ? 'link' : null"
+          [attr.aria-label]="cardLink(project) ? cardLinkLabel(project) + ': ' + project.title : null"
+          (click)="openLink(cardLink(project))"
+          (keydown.enter)="openLink(cardLink(project))"
         >
-          <!-- CHANGED LINE: use getImg(project) -->
           <img
             [src]="getImg(project)"
             [alt]="project.title"
             (error)="onImageError($event)"
             loading="lazy"
           />
-          <div class="image-overlay">
-            <span class="view-text">View Project</span>
+          <div class="image-overlay" *ngIf="cardLink(project)">
+            <span class="view-text">{{ cardLinkLabel(project) }}</span>
           </div>
         </div>
 

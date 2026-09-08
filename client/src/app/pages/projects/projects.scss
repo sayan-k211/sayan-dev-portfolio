@@ -119,7 +119,10 @@
   height: 220px;
   overflow: hidden;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  cursor: pointer;
+
+  &.is-linked {
+    cursor: pointer;
+  }
 
   img {
     width: 100%;
