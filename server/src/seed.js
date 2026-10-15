@@ -251,7 +251,7 @@ const MEDIA = {
         "channelName": "Sayan Khadka",
         "channelUrl": "https://www.youtube.com/@sayan_k211",
         "statistics": {
-          "subscribers": 1758,
+          "subscribers": 1778,
           "totalViews": 268508
         },
         "featuredVideos": [
